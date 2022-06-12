@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
 
+    //CREATE ACCOUNT
     public function admin_create(Request $request)
     {
 
@@ -50,6 +51,7 @@ class AdminController extends Controller
         }
     }
 
+    //LOGIN ACCOUNT
     public function admin_login(Request $request)
     {
         $admin = AdminModel::where('cancelled', 0)->where('email', $request->email)->first();

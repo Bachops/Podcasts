@@ -17,6 +17,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        //VALIDATE USER
         $session_token = false;
         if (session('login') && is_object(session('login')) && property_exists(session('login'), "token")) {
             $session_token = session('login')->token;

@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
+    //DO NOT REQUIRE ADMIN AUTH
     Route::prefix('admin')->group(function () {
         Route::post('/create', [AdminController::class, 'admin_create']);
         Route::post('/login', [AdminController::class, 'admin_login']);
     });
+    //REQUIRE ADMIN AUTH
     Route::prefix('podcast')->group(function () {
         Route::group(['middleware' => ['AdminMiddleware']], function () {
             Route::post('/create', [PodcastsController::class, 'podcast_create']);
